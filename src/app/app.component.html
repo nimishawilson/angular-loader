@@ -7,7 +7,10 @@
 <div>
   {{ loadingService.isLoading$ | async }}
 </div>
-<ng-container *ngIf="loadingService.isLoading$ | async">
-  <h1> Loading </h1>
+<ng-container *ngIf="loadingService.isLoading$ | async; else loadingCompleted">
+  <app-loader> </app-loader>
 </ng-container>
+<ng-template #loadingCompleted>
+  <h2> Loading completed </h2>
+</ng-template>
 <router-outlet></router-outlet>
